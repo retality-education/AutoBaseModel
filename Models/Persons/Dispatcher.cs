@@ -31,20 +31,27 @@ namespace AutoBaseModel.Models.Persons
         }
         private async void HandleRequest(Request request)
         {
+            _requests.Remove(request);
+
             if (request is GarageRequest garageRequest)
             {
                 _model.Notify(new EventData { EventType = EventType.ClientGoToGarage });
                 await Task.Delay(500);
-                _model.AddRequestToGarage(garageRequest);
+                
+                if(garageRequest.Type == GarageRequestType.LightCase 
+                    || garageRequest.Type == GarageRequestType.TowTruckСase)
+                    Task.Run(() => _model.AddRequestToHouse(new WorkerRequest { destination = DestinationOfWorker.GoToGarage}));
+                Task.Run(() => _model.AddRequestToGarage(garageRequest));
             }
             else if (request is RepairRequest repairRequest)
             {
                 _model.Notify(new EventData { EventType= EventType.CarClientGoToRepair });
                 await Task.Delay(500);
-                _model.AddRequestToRepair(repairRequest);
+                Task.Run(() => _model.AddRequestToHouse(new WorkerRequest { destination = DestinationOfWorker.GoToRepairShop }));
+                Task.Run(() => _model.AddRequestToRepair(repairRequest));
             }
             
-            _requests.Remove(request);
+            
         }
         private void Life()
         {

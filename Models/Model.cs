@@ -47,8 +47,17 @@ namespace AutoBaseModel.Models
         {
             while (true)
             {
-                _dispatcher.AddRequest(Factory.CreateRandomRequest());
-                Thread.Sleep(2500);
+                var request = Factory.CreateRandomRequest();
+                if (request is GarageRequest)
+                    Notify(new EventData { EventType = EventType.ClientComeToAutoBase });
+                else if (request is RepairRequest)
+                    Notify(new EventData { EventType = EventType.CarClientComeToAutoBase });
+                
+                Thread.Sleep(1000);
+                
+                _dispatcher.AddRequest(request);
+                
+                Thread.Sleep(10000);
             }
         }
         public void AddRequestToGarage(Request request)
@@ -59,9 +68,13 @@ namespace AutoBaseModel.Models
         {
             _repairShop.AddRequest(request);
         }
+        public void AddRequestToHouse(Request request)
+        {
+            _employeeHouse.AddRequest(request);
+        }
         public void AddMoney(decimal money)
         {
-            _money = money;
+            _money += money;
             Notify(new EventData { 
                 EventType = EventType.MoneyChanged,
                 Money = _money

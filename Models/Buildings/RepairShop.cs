@@ -56,7 +56,7 @@ namespace AutoBaseModel.Models.Buildings
         {
             var repairRequest = request as RepairRequest;
 
-            int timeToRepair = 500;
+            int timeToRepair = 1500;
 
             switch (repairRequest!.Type)
             {

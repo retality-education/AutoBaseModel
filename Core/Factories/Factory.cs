@@ -20,7 +20,7 @@ namespace AutoBaseModel.Core.Factories
         {
             if (rand.Next(10) < 5)
             {
-                var random = rand.Next(10);
+                var random = rand.Next(0, 10);
                 if (random < 3)
                     return new GarageRequest { Type = Enums.GarageRequestType.StartRentCase };
                 else if (random < 7)

@@ -99,6 +99,8 @@ namespace AutoBaseModel.Models.Buildings
         }
         protected override void HandleRequest(Request request)
         {
+            _requests.Remove(request);
+
             var garageRequest = request as GarageRequest;
 
             int timeToGo = 500;
@@ -124,7 +126,7 @@ namespace AutoBaseModel.Models.Buildings
                     throw new InvalidOperationException();
             }
 
-            _requests.Remove(request);
+            
         }
     }
 }

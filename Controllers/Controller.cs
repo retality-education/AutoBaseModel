@@ -20,5 +20,9 @@ namespace AutoBaseModel.Controllers
             _view.controller = this;
             _model.Subscribe(_view);
         }
+        public void Start()
+        {
+            _model.Start();
+        }
     }
 }

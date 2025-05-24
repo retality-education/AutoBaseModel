@@ -24,7 +24,7 @@ namespace AutoBaseModel.Models.Persons
             while (true)
             {
                 _model.Notify(new EventData { EventType = EventType.BossScreaming });
-                Thread.Sleep(1000);
+                Thread.Sleep(5000);
             }
         }
     }

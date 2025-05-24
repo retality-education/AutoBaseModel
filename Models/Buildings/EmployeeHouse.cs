@@ -16,6 +16,8 @@ namespace AutoBaseModel.Models.Buildings
        
         protected override void HandleRequest(Request request)
         {
+            RemoveRequest(request!);
+
             var workerRequest = request as WorkerRequest;
 
             int timeToGo = 500;
@@ -34,7 +36,7 @@ namespace AutoBaseModel.Models.Buildings
                     throw new InvalidOperationException();
             }
 
-            RemoveRequest(request!);
+            
         }
     }
 }
