@@ -57,7 +57,7 @@ namespace AutoBaseModel.Models
                 
                 _dispatcher.AddRequest(request);
                 
-                Thread.Sleep(10000);
+                Thread.Sleep(5000);
             }
         }
         public void AddRequestToGarage(Request request)

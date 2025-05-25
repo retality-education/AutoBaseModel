@@ -10,20 +10,17 @@ namespace AutoBaseModel.Core.Enums
     {
         MoneyChanged,
         BossScreaming,
-        DispatcherSayGoGarage,
-        DispatcherSayGoRepair,
-
-        WorkerGoToGarage,
 
         LightCarGoToOrder,
         TowCarGoToOrder,
         WorkerComeBackFromLightOrder,
         WorkerComeBackFromTowOrder,
         TowCarComeBackToGarage,
+        
+        WorkerGoToGarage,
         WorkerGoToRepairShop,
         WorkerGoBackToHouseFromGarage,
         WorkerGoBackToHouseFromRepair,
-        WorkerGoBackToHouse,
 
         ClientComeToAutoBase,
         CarClientComeToAutoBase,

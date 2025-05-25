@@ -41,6 +41,7 @@ namespace AutoBaseModel.Models.Persons
                 if(garageRequest.Type == GarageRequestType.LightCase 
                     || garageRequest.Type == GarageRequestType.TowTruckСase)
                     Task.Run(() => _model.AddRequestToHouse(new WorkerRequest { destination = DestinationOfWorker.GoToGarage}));
+                await Task.Delay(1000);
                 Task.Run(() => _model.AddRequestToGarage(garageRequest));
             }
             else if (request is RepairRequest repairRequest)

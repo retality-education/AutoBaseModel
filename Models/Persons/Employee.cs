@@ -20,13 +20,17 @@ namespace AutoBaseModel.Models.Persons
         {
             await Task.Delay(2000);
 
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
                 _model.Notify(new EventData
                 {
                     EventType = EventType.WorkerComeBackFromLightOrder
                 });
                 _model.AddMoney(_random.Next(10000, 20000));
+
+                await Task.Delay(1100);
+
+                _model.Notify(new EventData { EventType = EventType.WorkerGoBackToHouseFromGarage });
             });
         }
         public async void ExecuteTowCase()
@@ -66,7 +70,7 @@ namespace AutoBaseModel.Models.Persons
                             EventType = EventType.TowCarComeBackToGarage
                         });
 
-                        await Task.Delay(200);
+                        await Task.Delay(1100);
 
                         _model.Notify(new EventData { EventType = EventType.WorkerGoBackToHouseFromGarage });
                         
